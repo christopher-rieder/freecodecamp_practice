@@ -18,8 +18,7 @@ function nextPrime(n) {
     let next = nextOddNumber(n);
 
     while (true) {
-        let ceiling = Math.floor((Math.sqrt(next)));
-        ceiling = nextOddNumber(ceiling);
+        const ceiling = nextOddNumber(Math.floor((Math.sqrt(next)))); //FIXME: HOW TO CHAIN IN A BETTER WAY ??
         let i;
         for (i = ceiling; i > 1; i -= 2) {
             if (next % i === 0) {
@@ -39,3 +38,7 @@ console.time('time');
 let result = nthPrime(10001); //104743
 console.log(result);
 console.timeEnd('time');
+
+//const ceiling = nextOddNumber(Math.floor((Math.sqrt(5455)))); //FIXME: HOW TO CHAIN IN A BETTER WAY 
+const ceiling = Math.sqrt(5455); //FIXME: HOW TO CHAIN IN A BETTER WAY 
+console.log(ceiling);

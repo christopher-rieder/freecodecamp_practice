@@ -1,3 +1,4 @@
+"use strict";
 function primeSummationBrute(n) {
     let sum = 2; //special case
     let prime = 3;
@@ -18,9 +19,13 @@ function primeSummation(n) {
         sieve.push(true);
     }
 
-    for (let i = 2; i < ceiling; i++) {
+    for (let i = 4; i < n; i += 2) {
+        sieve[i] = false;
+    }
+
+    for (let i = 3; i <= ceiling; i += 2) {
         if (sieve[i]) {
-            for (let j = i * i; j < n; j+=i) {
+            for (let j = i * i; j < n; j += i * 2) {
                 sieve[j] = false;
             }
         }
@@ -39,8 +44,7 @@ function nextPrime(n) {
     let next = nextOddNumber(n);
 
     while (true) {
-        let ceiling = Math.floor((Math.sqrt(next)));
-        ceiling = nextOddNumber(ceiling);
+        const ceiling = nextOddNumber(Math.floor((Math.sqrt(next))));
         let i;
         for (i = ceiling; i > 1; i -= 2) {
             if (next % i === 0) {
