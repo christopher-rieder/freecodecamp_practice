@@ -5,9 +5,8 @@ const getPalindrome =
     Number(String(n) + String(n).split("").reverse().join(""));
 
 function largestPalindromeProduct(digit) {
-    // Good luck!
-    const ceiling = (10 ** digit) - 1;
-    const floor = 10 ** (digit - 1);
+    const ceiling = (10 ** digit) - 1; //10^3 - 1  === 999
+    const floor = 10 ** (digit - 1);   //10^(3-1)  === 100
     for (let i = ceiling - 1; i >= floor; i -= 1) {
         //for 999..100 we get the corresponding palindrome;; 999=>999999 ; 998=>998899 ; 997=>997799
         const palindrome = getPalindrome(i);
