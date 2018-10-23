@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 
 // Brute recursion, extremely ineficient.
-function euler15_latticePathBrute(x, y, count) {
-    if (x == 0 || y == 0) {
-        count += 1;
-        return count;
-    }
-    count = euler15_latticePathBrute(x - 1, y, count);
-    count = euler15_latticePathBrute(x, y - 1, count);
-    return count;
-}
+// function euler15LatticePathBrute (x, y, count) {
+//   if (x == 0 || y == 0) {
+//     count += 1;
+//     return count;
+//   }
+//   count = euler15LatticePathBrute(x - 1, y, count);
+//   count = euler15LatticePathBrute(x, y - 1, count);
+//   return count;
+// }
 
-//using pascal triangle
-function latticePaths(gridSize) {
-    let grid = [];
-    for (let i = 0; i <= gridSize; i++) {
-        grid[i] = 1;
-    }
+// using pascal triangle
+function latticePaths (gridSize) {
+  let grid = [];
+  for (let i = 0; i <= gridSize; i++) {
+    grid[i] = 1;
+  }
 
-    for (let i = 1; i <= gridSize; i++) {
-        for (let j = 1; j <= gridSize; j++) {
-            grid[j] = grid[j] + grid[j - 1];
-        }
-        //console.log(grid);
+  for (let i = 1; i <= gridSize; i++) {
+    for (let j = 1; j <= gridSize; j++) {
+      grid[j] = grid[j] + grid[j - 1];
     }
-    return grid[gridSize];
+    // console.log(grid);
+  }
+  return grid[gridSize];
 }
 
 console.time('time');

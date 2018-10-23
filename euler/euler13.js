@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const fiftyDigitNums = `37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
@@ -99,38 +99,41 @@ const fiftyDigitNums = `37107287533902102798797998220837590246510135740250
 77158542502016545090413245809786882778948721859617
 72107838435069186155435662884062257473692284509516
 20849603980134001723930671666823555245252804609722
-53503534226472524250874054075591789781264330331690`.split("\n");
-//5537376230
+53503534226472524250874054075591789781264330331690`.split('\n');
+// 5537376230
 
-
-//ad-hoc function tailored to this problem
-//it adds the last digit of every number, then carry
-//the result / 10 to the last-1 digit and so on.
-function largeSum(arr) {
-    let carry = 0;
-    for (let j = arr[0].length; j > 10; j--) {
-        for (let i = 0; i < arr.length; i++) {
-            carry += Number(arr[i].charAt(j));
-        }
-        carry = Math.floor(carry / 10);
-    }
-    let sum = carry;
-    console.log("Carry: " + carry);
-
+// ad-hoc function tailored to this problem
+// it adds the last digit of every number, then carry
+// the result / 10 to the last-1 digit and so on.
+function largeSum (arr) {
+  let carry = 0;
+  for (let j = arr[0].length; j > 10; j--) {
     for (let i = 0; i < arr.length; i++) {
-        sum += Number(arr[i].slice(0, 10));
+      carry += Number(arr[i].charAt(j));
     }
-    return Number(String(sum).slice(0, 10));
+    carry = Math.floor(carry / 10);
+  }
+  let sum = carry;
+  console.log('Carry: ' + carry);
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += Number(arr[i].slice(0, 10));
+  }
+  return Number(String(sum).slice(0, 10));
 }
 
 // only change code above this line
 
 const testNums = [
-    '37107287533902102798797998220837590246510135740250',
-    '46376937677490009712648124896970078050417018260538'
-];//8348422521
+  '37107287533902102798797998220837590246510135740250',
+  '46376937677490009712648124896970078050417018260538'
+];// 8348422521
 
 console.time('time');
 let result = largeSum(fiftyDigitNums);
+console.log(result);
+
+console.time('time');
+result = largeSum(testNums);
 console.log(result);
 console.timeEnd('time');

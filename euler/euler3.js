@@ -1,22 +1,22 @@
-"use strict";
+'use strict';
 
-function largestPrimeFactor(number) {
-    return factors(number).pop();
+function largestPrimeFactor (number) {
+  return factors(number).pop();
 }
 
-function factors(n) {
-    let i = 2;
-    let factors = [];
+function factors (n) {
+  let i = 2;
+  let factors = [];
 
-    while (i <= n) {
-        if (n % i === 0) {
-            n /= i;
-            factors.push(i);
-        } else {
-            i += 1;
-        }
+  while (i <= n) {
+    if (n % i === 0) {
+      n /= i;
+      factors.push(i);
+    } else {
+      i += 1;
     }
-    return factors;
+  }
+  return factors;
 }
 
 console.time('time');
