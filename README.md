@@ -1,5 +1,7 @@
 # freeCodeCamp practice
+
 ![alt text][logo]
+
 [logo]: fcc-logo.png "Logo FCC"
 
 **[Profile on freeCodeCamp](https://www.freecodecamp.org/topher)**
