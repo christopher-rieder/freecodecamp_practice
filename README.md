@@ -16,6 +16,6 @@
 `Project Euler` Problems from Project Euler (https://projecteuler.net) made in multiple languages.
   ..TODO: make an react app for the problems in javascript, sync it in codesandbox
   
-  ![alt text][euler profile]
+  ![alt text][eulerProfile]
   
   [eulerProfile]: https://projecteuler.net/profile/topher88.png "My profile in Project Euler"
