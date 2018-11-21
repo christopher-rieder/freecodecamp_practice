@@ -1,15 +1,11 @@
 # freeCodeCamp practice
+![alt text][logo]
+[logo]: fcc-logo.png "Logo FCC"
 
 **[Profile on freeCodeCamp](https://www.freecodecamp.org/topher)**
 
 **[Profile on CodePen](https://codepen.io/topher88/)**
 - `CodePen` Here there are the projects for each certification of freeCodeCamp
-
-
-![alt text][logo]
-
-[logo]: fcc-logo.png "Logo FCC"
-
 
 - `javascript` - This folder contains some of the items resolved in the curriculum
     `javascript-es6.js` - This file contains some of the items with the new ES6 syntax.
