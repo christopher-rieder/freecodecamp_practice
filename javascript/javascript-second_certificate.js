@@ -88,3 +88,23 @@ console.log(
 console.log(
   whatIsInAName([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' })
 );
+
+// Intermediate Algorithm Scripting: Spinal Tap Case
+// Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+
+/**
+  * @param {String} str A string
+ */
+function spinalCase (str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+  return str.split(/[\W_-]/) // split by nowords characters, '-' and '_'
+    .join('-')
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // add a dash between a lowercase and a uppercase letter
+    .toLowerCase();
+}
+console.log('Intermediate Algorithm Scripting: Spinal Tap Case');
+console.log(spinalCase('This Is Spinal Tap'));
+console.log(spinalCase('thisIsSpinalTap'));
+console.log(spinalCase('The_Andy_Griffith_Show'));
+console.log(spinalCase('AllThe-small Things'));
