@@ -12,6 +12,9 @@
 // wich makes more sense semantically: if any/some element is equal to el1, it doesn't pass the filter
 // but the negation add a posible point of confusion too
 
+// NOTE: this predicate:         el1 => arr2.every(el2 => el2 !== el1))
+// is functionally the same as:  el1 => !arr2.includes(el1)
+
 // el1: element from arr1
 // el2: element from arr2
 function diffArray (arr1, arr2) {
@@ -30,4 +33,58 @@ function diffArray (arr1, arr2) {
   // Same, same; but different.
 }
 
+function diffArraySimple (arr1, arr2) {
+  var newArr = []
+    .concat(
+      arr1.filter(el1 => !arr2.includes(el1))) // if ANY element of arr2 is equal to el1, el1 doesn't pass the filter.
+    .concat(
+      arr2.filter(el2 => !arr1.includes(el2))); // if ANY element of arr1 is equal to el2, el2 doesn't pass the filter.
+  console.log(newArr);
+
+  return newArr;
+  // Same, same; but different.
+}
+
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+diffArraySimple([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+// Intermediate Algorithm Scripting: Seek and Destroy
+// You will be provided with an initial array (the first argument in the destroyer function),
+// followed by one or more arguments. Remove all elements from the initial array that are of
+// the same value as these arguments.
+
+function destroyer (arr, ...values) {
+  // Remove all the values
+  return []
+    .concat(
+      arr.filter(
+        el1 => values.every(
+          el2 => el2 !== el1))); // if ANY element of arr2 is equal to el1, el1 doesn't pass the filter.
+}
+
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+/** Returns an array that is the intersection of the two arrays passed by parameter.
+ * @param {Array} arr1 first array
+ * @param {Array} arr2 second array
+ */
+function intersection (arr1, arr2) {
+  return [].concat(arr1.filter(el1 => arr2.includes(el1)));
+}
+
+function whatIsInAName (collection, source) {
+  var sourceKeys = Object.keys(source);
+  return collection.filter(el1 => {
+    var el1Keys = Object.keys(el1);
+    return el1Keys.length >= sourceKeys.length && sourceKeys.every(key => el1[key] === source[key]);
+  });
+}
+
+console.log(
+  whatIsInAName([{ 'apple': 1, 'bat': 2 }, { 'bat': 2 }, { 'apple': 1, 'bat': 2, 'cookie': 2 }],
+    { 'apple': 1, 'bat': 2 })
+);
+
+console.log(
+  whatIsInAName([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' })
+);
