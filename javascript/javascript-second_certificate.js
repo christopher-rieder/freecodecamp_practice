@@ -414,3 +414,24 @@ var Person = function (firstAndLast) {
 
 var bob = new Person('Bob Ross');
 bob.getFullName();
+
+// Intermediate Algorithm Scripting: Map the Debris
+
+function orbitalPeriod (arr) {
+  var GM = 398600.4418;
+  var EARTH_RADIUS = 6367.4447;
+
+  return arr.map(el => {
+    var ORBIT_DISTANCE = EARTH_RADIUS + el.avgAlt;
+    var orbitalPeriod = Math.round(2 * Math.PI * Math.sqrt(ORBIT_DISTANCE * ORBIT_DISTANCE * ORBIT_DISTANCE / GM));
+    delete el.avgAlt;
+    el.orbitalPeriod = orbitalPeriod;
+    return el;
+  });
+}
+
+const calculated = orbitalPeriod([{name: 'sputnik', avgAlt: 35873.5553}]);
+console.log(calculated);
+
+const calculated2 = orbitalPeriod([{name: 'iss', avgAlt: 413.6}, {name: 'hubble', avgAlt: 556.7}, {name: 'moon', avgAlt: 378632.553}]);
+console.log(calculated2);
