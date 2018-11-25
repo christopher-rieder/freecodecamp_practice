@@ -514,3 +514,28 @@ function convertToRoman (num) {
 }
 
 console.log(convertToRoman(3446));
+
+// JavaScript Algorithms and Data Structures Projects: Caesars Cipher
+
+function rot13 (str) { // LBH QVQ VG!
+  const ASCII_CODE_A = 65;
+  const ASCII_CODE_Z = 90;
+
+  function _shift13 (charCode) {
+    if (charCode < ASCII_CODE_A || charCode > ASCII_CODE_Z) {
+      return charCode;
+    }
+    return charCode - 13 >= ASCII_CODE_A ? charCode - 13 : charCode + 13;
+  }
+
+  return str
+    .split('')
+    .map(char => char.charCodeAt(0))
+    .map(_shift13)
+    .map(charCode => String.fromCharCode(charCode))
+    .join('');
+}
+
+// Change the inputs below to test
+console.log(rot13('SERR PBQR PNZC'));
+console.log(rot13('SERR CVMMN!'));
