@@ -338,3 +338,24 @@ function dropElements (arr, func) {
 }
 
 dropElements([1, 2, 3], function (n) { return n < 3; });
+
+// Intermediate Algorithm Scripting: Steamroller
+
+function steamrollArray (arr) {
+  // I'm a steamroller, baby
+  let flattened = [];
+  function _flatten (arr) {
+    arr.forEach(el => {
+      if (el instanceof Array) {
+        _flatten(el);
+      } else {
+        flattened.push(el);
+      }
+    });
+    return flattened;
+  }
+
+  return _flatten(arr);
+}
+
+console.log(steamrollArray([1, [2], [3, [[4]]]]));
