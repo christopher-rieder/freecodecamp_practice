@@ -435,3 +435,12 @@ console.log(calculated);
 
 const calculated2 = orbitalPeriod([{name: 'iss', avgAlt: 413.6}, {name: 'hubble', avgAlt: 556.7}, {name: 'moon', avgAlt: 378632.553}]);
 console.log(calculated2);
+
+// JavaScript Algorithms and Data Structures Projects: Palindrome Checker
+
+function palindrome (str) {
+  const filtered = str.toLowerCase().match(/[a-z]|\d/g);
+  return filtered.join('') === filtered.reverse().join('');
+}
+
+palindrome('eye');
