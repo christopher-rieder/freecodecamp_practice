@@ -392,3 +392,25 @@ function addTogether (a, b) {
 }
 
 addTogether(2, 3);
+
+// Intermediate Algorithm Scripting: Make a Person
+
+var Person = function (firstAndLast) {
+  let first = firstAndLast.split(' ')[0];
+  let last = firstAndLast.split(' ')[1];
+
+  this.getFullName = () => `${first} ${last}`;
+  this.getFirstName = () => first;
+  this.getLastName = () => last;
+
+  this.setFullName = str => {
+    first = str.split(' ')[0];
+    last = str.split(' ')[1];
+  };
+
+  this.setFirstName = str => { first = str; };
+  this.setLastName = str => { last = str; };
+};
+
+var bob = new Person('Bob Ross');
+bob.getFullName();
