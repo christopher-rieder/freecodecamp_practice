@@ -198,3 +198,15 @@ function uniteUnique (...arrs) {
 console.log(
   uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])
 );
+
+// Intermediate Algorithm Scripting: Convert HTML Entities
+
+function convertHTML (str) {
+  return str.replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+convertHTML('Dolce & Gabbana');
