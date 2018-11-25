@@ -161,3 +161,21 @@ function pairElement (str) {
 }
 
 pairElement('GCG');
+
+// Intermediate Algorithm Scripting: Missing letters
+
+function fearNotLetter (str) {
+  let charCode;
+  let charCodes = str.split('').map(char => char.charCodeAt(0));
+  charCodes.forEach((char, index, arr) => {
+    if (char + 1 !== arr[index + 1] && arr[index + 1]) {
+      charCode = char + 1;
+    }
+  });
+
+  if (charCode) {
+    return String.fromCharCode(charCode);
+  }
+}
+
+console.log(fearNotLetter('abce'));
