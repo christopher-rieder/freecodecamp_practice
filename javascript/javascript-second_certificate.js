@@ -122,3 +122,19 @@ function translatePigLatin (str) {
 console.log(
   translatePigLatin('consonant')
 );
+
+// Intermediate Algorithm Scripting: Search and Replace
+
+function myReplace (str, before, after) {
+  let regexp = new RegExp(before, 'i');
+  let match = str.match(regexp);
+  let firstLetter = match[0][0];
+  if (firstLetter === firstLetter.toUpperCase()) {
+    after = after[0].toUpperCase() + after.substring(1);
+  }
+
+  return str.replace(regexp, after);
+}
+console.log(
+  myReplace('A quick brown fox Jumped over the lazy dog', 'jumped', 'leaped')
+);
