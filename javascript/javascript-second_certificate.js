@@ -581,3 +581,102 @@ console.log(telephoneCheck('-1 (757) 622-7382'));
 console.log(telephoneCheck('10 (757) 622-7382'));
 console.log(telephoneCheck('2(757)622-7382'));
 console.log(telephoneCheck('27576227382'));
+
+// JavaScript Algorithms and Data Structures Projects: Cash Register
+console.log('--- JavaScript Algorithms and Data Structures Projects: Cash Register ---');
+
+function checkCashRegister (price, cash, cid) {
+  let change = Math.round((cash - price) * 100);
+
+  // Here is your change, ma'am.
+
+  // process cid
+  // all values in cents
+  let processedCid = cid.map(el => {
+    let changeItem = {
+      name: el[0],
+      total: Math.round(el[1] * 100) // values in cents
+    };
+    switch (el[0]) {
+      case 'PENNY':
+        changeItem.qty = Math.round(changeItem.total / 1);
+        changeItem.value = 1;
+        break;
+      case 'NICKEL':
+        changeItem.qty = Math.round(changeItem.total / 5);
+        changeItem.value = 5;
+        break;
+      case 'DIME':
+        changeItem.qty = Math.round(changeItem.total / 10);
+        changeItem.value = 10;
+        break;
+      case 'QUARTER':
+        changeItem.qty = Math.round(changeItem.total / 25);
+        changeItem.value = 25;
+        break;
+      case 'ONE':
+        changeItem.qty = Math.round(changeItem.total / 100);
+        changeItem.value = 100;
+        break;
+      case 'FIVE':
+        changeItem.qty = Math.round(changeItem.total / 500);
+        changeItem.value = 500;
+        break;
+      case 'TEN':
+        changeItem.qty = Math.round(changeItem.total / 1000);
+        changeItem.value = 1000;
+        break;
+      case 'TWENTY':
+        changeItem.qty = Math.round(changeItem.total / 2000);
+        changeItem.value = 2000;
+        break;
+      case 'ONE HUNDRED':
+        changeItem.qty = Math.round(changeItem.total / 10000);
+        changeItem.value = 10000;
+        break;
+    }
+    return changeItem;
+  }).reverse();
+
+  console.log(JSON.stringify(processedCid, '', 2));
+
+  let changeToGive = processedCid.map(el => {
+    if (change > el.value) {
+      let qty = Math.min(
+        Math.floor(change / el.value),
+        el.qty
+      );
+      change = change - el.value * qty;
+      return [el.name, qty * el.value / 100];
+    }
+  }).filter(e => e);
+
+  if (change === 0) {
+    return {
+      status: 'OPEN',
+      change: changeToGive
+    };
+  }
+  if (change > 0) {
+    return {
+      status: 'INSUFFICIENT_FUNDS',
+      change: []
+    };
+  }
+}
+
+// Example cash-in-drawer array:
+// [["PENNY", 1.01],
+// ["NICKEL", 2.05],
+// ["DIME", 3.1],
+// ["QUARTER", 4.25],
+// ["ONE", 90],
+// ["FIVE", 55],
+// ["TEN", 20],
+// ["TWENTY", 60],
+// ["ONE HUNDRED", 100]]
+
+// checkCashRegister(3.26, 100, [['PENNY', 1.01], ['NICKEL', 2.05], ['DIME', 3.1], ['QUARTER', 4.25], ['ONE', 90], ['FIVE', 55], ['TEN', 20], ['TWENTY', 60], ['ONE HUNDRED', 100]]);
+// {status: "OPEN", change: [["TWENTY", 60], ["TEN", 20], ["FIVE", 15], ["ONE", 1], ["QUARTER", 0.5], ["DIME", 0.2], ["PENNY", 0.04]]}
+
+checkCashRegister(19.5, 20, [['PENNY', 0.01], ['NICKEL', 0], ['DIME', 0], ['QUARTER', 0], ['ONE', 0], ['FIVE', 0], ['TEN', 0], ['TWENTY', 0], ['ONE HUNDRED', 0]]);
