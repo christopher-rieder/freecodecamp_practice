@@ -326,3 +326,15 @@ function smallestCommons (arr) {
 }
 
 smallestCommons([1, 5]);
+
+// Intermediate Algorithm Scripting: Drop it
+
+function dropElements (arr, func) {
+  let idx = 0;
+  while (!func(arr[idx])) {
+    idx++;
+  }
+  return arr.slice(idx);
+}
+
+dropElements([1, 2, 3], function (n) { return n < 3; });
