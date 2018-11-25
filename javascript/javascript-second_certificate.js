@@ -108,3 +108,17 @@ console.log(spinalCase('This Is Spinal Tap'));
 console.log(spinalCase('thisIsSpinalTap'));
 console.log(spinalCase('The_Andy_Griffith_Show'));
 console.log(spinalCase('AllThe-small Things'));
+
+// Intermediate Algorithm Scripting: Pig Latin
+
+function translatePigLatin (str) {
+  if (str[0].match(/[aeiou]/)) {
+    return str + 'way';
+  }
+  let consonants = str.match(/[^aeiou]+/);
+
+  return str.substring(consonants[0].length).concat(consonants, 'ay');
+}
+console.log(
+  translatePigLatin('consonant')
+);
