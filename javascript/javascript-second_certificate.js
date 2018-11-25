@@ -210,3 +210,20 @@ function convertHTML (str) {
 }
 
 convertHTML('Dolce & Gabbana');
+
+// Intermediate Algorithm Scripting: Sum All Odd Fibonacci Numbers
+
+function sumFibs (num) {
+  let a = 1;
+  let b = 1;
+  let fibo = [1];
+
+  while (b <= num) {
+    fibo.push(b);
+    [a, b] = [b, a + b];
+  }
+
+  return fibo.filter(n => n % 2 === 1).reduce((a, b) => a + b);
+}
+
+console.log(sumFibs(75025));
