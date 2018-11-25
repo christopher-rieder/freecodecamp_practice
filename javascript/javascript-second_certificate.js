@@ -179,3 +179,22 @@ function fearNotLetter (str) {
 }
 
 console.log(fearNotLetter('abce'));
+
+// Intermediate Algorithm Scripting: Sorted Union
+
+function uniteUnique (...arrs) {
+  let newArr = [];
+  arrs.forEach(nestedArray => {
+    nestedArray.forEach(el => {
+      if (!newArr.includes(el)) {
+        newArr.push(el);
+      }
+    });
+  });
+
+  return newArr;
+}
+
+console.log(
+  uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1])
+);
