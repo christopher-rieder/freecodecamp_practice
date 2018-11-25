@@ -539,3 +539,45 @@ function rot13 (str) { // LBH QVQ VG!
 // Change the inputs below to test
 console.log(rot13('SERR PBQR PNZC'));
 console.log(rot13('SERR CVMMN!'));
+
+// JavaScript Algorithms and Data Structures Projects: Telephone Number Validator
+// 555-555-5555
+// (555)555-5555
+// (555) 555-5555
+// 555 555 5555
+// 5555555555
+// 1 555 555 5555
+
+function telephoneCheck (str) {
+  let countryCode = str.split(/\({0,1}\d{3}\){0,1}/)[0];
+  let telephone = str.substring(countryCode.length);
+
+  if (/\d{10,}/.test(str)) {
+    countryCode = str.substring(0, str.length - 10);
+    telephone = str.substring(str.length - 10);
+  }
+
+  console.log('---');
+  console.log(countryCode || 'NO COUNTRY CODE');
+  console.log(telephone);
+
+  if (countryCode && parseInt(countryCode) !== 1) {
+    return false;
+  }
+
+  const regexs = [
+    new RegExp(/^\d{3}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}/),
+    new RegExp(/^\(\d{3}\)\s{0,1}\d{3}-\d{4}/)
+  ];
+
+  return regexs.some(regex => regex.test(telephone));
+}
+
+console.log(telephoneCheck('555-555-5555'));
+console.log(telephoneCheck('(6054756961)'));
+console.log(telephoneCheck('1 555-555-5555'));
+console.log(telephoneCheck('1 555 555 5555'));
+console.log(telephoneCheck('-1 (757) 622-7382'));
+console.log(telephoneCheck('10 (757) 622-7382'));
+console.log(telephoneCheck('2(757)622-7382'));
+console.log(telephoneCheck('27576227382'));
