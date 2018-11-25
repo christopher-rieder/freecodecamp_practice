@@ -444,3 +444,73 @@ function palindrome (str) {
 }
 
 palindrome('eye');
+
+// JavaScript Algorithms and Data Structures Projects: Roman Numeral Converter
+
+// convertToRoman(798) should return "DCCXCVIII"
+function convertToRoman (num) {
+  function oneToTenDigit (digit) {
+    switch (digit) {
+      case 0: return '';
+      case 1: return 'I';
+      case 2: return 'II';
+      case 3: return 'III';
+      case 4: return 'IV';
+      case 5: return 'V';
+      case 6: return 'VI';
+      case 7: return 'VII';
+      case 8: return 'VIII';
+      case 9: return 'IX';
+      default: return undefined;
+    }
+  }
+
+  function tenDigit (digit) {
+    switch (digit) {
+      case 0: return '';
+      case 1: return 'X';
+      case 2: return 'XX';
+      case 3: return 'XXX';
+      case 4: return 'XL';
+      case 5: return 'L';
+      case 6: return 'LX';
+      case 7: return 'LXX';
+      case 8: return 'LXXX';
+      case 9: return 'XC';
+      default: return undefined;
+    }
+  }
+
+  function centDigit (digit) {
+    switch (digit) {
+      case 0: return '';
+      case 1: return 'C';
+      case 2: return 'CC';
+      case 3: return 'CCC';
+      case 4: return 'CD';
+      case 5: return 'D';
+      case 6: return 'DC';
+      case 7: return 'DCC';
+      case 8: return 'DCCC';
+      case 9: return 'CM';
+      default: return undefined;
+    }
+  }
+
+  function milDigit (digit) {
+    if (digit === 0) {
+      return '';
+    }
+    if (!Number.isInteger(digit)) {
+      return undefined;
+    }
+    return 'M'.repeat(digit);
+  }
+
+  return milDigit(Math.floor((num % 10000) / 1000)) +
+        centDigit(Math.floor((num % 1000) / 100)) +
+        tenDigit(Math.floor((num % 100) / 10)) +
+        oneToTenDigit(Math.floor(num % 10) / 1);
+}
+
+console.log(convertToRoman(3446));
