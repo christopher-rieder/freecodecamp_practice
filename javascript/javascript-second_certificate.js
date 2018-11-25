@@ -379,3 +379,16 @@ function truthCheck (collection, pre) {
 }
 
 truthCheck([{'user': 'Tinky-Winky', 'sex': 'male'}, {'user': 'Dipsy', 'sex': 'male'}, {'user': 'Laa-Laa', 'sex': 'female'}, {'user': 'Po', 'sex': 'female'}], 'sex');
+
+// Intermediate Algorithm Scripting: Arguments Optional
+
+function addTogether (a, b) {
+  if (Number.isInteger(b)) {
+    return a + b;
+  }
+  if (!b && Number.isInteger(a)) {
+    return b => addTogether(a, b);
+  }
+}
+
+addTogether(2, 3);
