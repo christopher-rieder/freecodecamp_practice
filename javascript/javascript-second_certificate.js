@@ -266,3 +266,63 @@ function sumPrimes (num) {
 }
 
 console.log(sumPrimes(977));
+
+// Intermediate Algorithm Scripting: Smallest Common Multiple
+
+const add = (a, b) => a + b;
+const multiply = (a, b) => a * b;
+
+/* Returns an array with all the prime factors of n, ordered in ascending order.
+ * Returns repeated prime numbers for every prime factor that is exponential.
+ * Example: for 16 it will return [2,2,2,2]
+ */
+const primeFactors = function (n) {
+  let i = 2;
+  let factors = [];
+
+  while (i <= n) {
+    if (n % i === 0) {
+      n /= i;
+      factors.push(i);
+    } else { // This else is for avoiding returning only one time a exponential prime factor.
+      i += 1;
+    }
+  }
+  return factors;
+};
+
+const smallestCommonMultiple = function (numbers) {
+  let factors = [];
+
+  let num = numbers.pop();
+  while (num !== undefined) {
+    let numFactors = primeFactors(num);
+
+    // For every factor of num, we divide each of number of the numbers array.
+    // example: for 20, the factors are 2, 2 and 5.
+    // so we divide the numbers array with 2, 2 again and then 5.
+    numFactors.forEach(numFactor => {
+      numbers = numbers
+        .map(n => n % numFactor === 0 ? n / numFactor : n)
+        .filter(n => n > 1); // we remove all the 1s generated with the division, if they exist.
+      factors.push(numFactor);
+    });
+
+    num = numbers.pop(); // we process the next number in the numbers array.
+  }
+  console.log(factors);
+  return factors.reduce(multiply);
+};
+
+function smallestCommons (arr) {
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+  let nums = [];
+  for (let i = min; i <= max; i++) {
+    nums.push(i);
+  }
+
+  return smallestCommonMultiple(nums);
+}
+
+smallestCommons([1, 5]);
