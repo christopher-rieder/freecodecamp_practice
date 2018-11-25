@@ -227,3 +227,42 @@ function sumFibs (num) {
 }
 
 console.log(sumFibs(75025));
+
+// Intermediate Algorithm Scripting: Sum All Primes
+
+// expects n > 1
+// returns the next prime, as the name implies.
+const nextPrime = function (n) {
+  if (n < 2) {
+    return 2;
+  }
+  let next = oddNumber(n) + 2; // always an odd number
+  let i;
+  while (i !== 1) {
+    const ceiling = compose(oddNumber, Math.floor, Math.sqrt)(next);
+    for (i = ceiling; i > 1; i -= 2) {
+      if (next % i === 0) {
+        next += 2; // not a prime, divisible by 'i', evaluate next odd number.
+        break; // break for loop, continue next while loop iteration.
+      }
+    }
+  }
+  return next;
+};
+
+// returns the same number or the previous number if the input is an even number.
+// 6-->5 ; 7-->7 ; 8-->7; 9-->9;
+const oddNumber = n => n % 2 === 0 ? n - 1 : n;
+const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
+
+function sumPrimes (num) {
+  let primes = [];
+  let prime = 2;
+  while (prime <= num) {
+    primes.push(prime);
+    prime = nextPrime(prime);
+  }
+  return primes.reduce((a, b) => a + b);
+}
+
+console.log(sumPrimes(977));
