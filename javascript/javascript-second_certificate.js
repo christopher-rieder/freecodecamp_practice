@@ -520,12 +520,14 @@ console.log(convertToRoman(3446));
 function rot13 (str) { // LBH QVQ VG!
   const ASCII_CODE_A = 65;
   const ASCII_CODE_Z = 90;
+  const SHIFT = 13;
 
   function _shift13 (charCode) {
     if (charCode < ASCII_CODE_A || charCode > ASCII_CODE_Z) {
       return charCode;
     }
-    return charCode - 13 >= ASCII_CODE_A ? charCode - 13 : charCode + 13;
+    // return charCode - 13 >= ASCII_CODE_A ? charCode - 13 : charCode + 13;
+    return charCode - SHIFT >= ASCII_CODE_A ? charCode - SHIFT : ASCII_CODE_Z - ASCII_CODE_A - SHIFT + 1 + charCode;
   }
 
   return str
