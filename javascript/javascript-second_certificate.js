@@ -64,14 +64,6 @@ function destroyer (arr, ...values) {
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 
-/** Returns an array that is the intersection of the two arrays passed by parameter.
- * @param {Array} arr1 first array
- * @param {Array} arr2 second array
- */
-function intersection (arr1, arr2) {
-  return [].concat(arr1.filter(el1 => arr2.includes(el1)));
-}
-
 function whatIsInAName (collection, source) {
   var sourceKeys = Object.keys(source);
   return collection.filter(el1 => {
@@ -269,9 +261,6 @@ console.log(sumPrimes(977));
 
 // Intermediate Algorithm Scripting: Smallest Common Multiple
 
-const add = (a, b) => a + b;
-const multiply = (a, b) => a * b;
-
 /* Returns an array with all the prime factors of n, ordered in ascending order.
  * Returns repeated prime numbers for every prime factor that is exponential.
  * Example: for 16 it will return [2,2,2,2]
@@ -311,7 +300,7 @@ const smallestCommonMultiple = function (numbers) {
     num = numbers.pop(); // we process the next number in the numbers array.
   }
   console.log(factors);
-  return factors.reduce(multiply);
+  return factors.reduce((a, b) => a * b);
 };
 
 function smallestCommons (arr) {

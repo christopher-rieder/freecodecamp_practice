@@ -9,12 +9,13 @@
 **[Profile on CodePen](https://codepen.io/topher88/)** : Here there are the projects for each certification of freeCodeCamp
 
 - `javascript` - This folder contains some of the items resolved in the curriculum
-    `javascript-es6.js` - This file contains some of the items with the new ES6 syntax.
-    `javascript-regex.js` - This file contains some of the items of the regular expressions section.
+    - `javascript-es6.js` - This file contains some of the items with the new ES6 syntax.
+    - `javascript-regex.js` - This file contains some of the items of the regular expressions section.
 
 - `glitch`
-    `Basic Node and Express` - https://glitch.com/edit/#!/responsible-mayonnaise?path=myApp.js:58:16
-    `MongoDB and Mongoose` - https://glitch.com/edit/#!/lavender-geranium?path=myApp.js:57:8
+    - `Basic Node and Express` - https://glitch.com/edit/#!/responsible-mayonnaise?path=myApp.js:58:16
+    - `MongoDB and Mongoose` - https://glitch.com/edit/#!/lavender-geranium?path=myApp.js:57:8
+    - `Information Security with HelmetJS ` - t/#!/nickel-force?path=myApp.js:5:0
 
 **[Project Euler](https://github.com/topher88/Project_Euler_Multi/tree/master/javascript)**
 `Project Euler` Problems from Project Euler (https://projecteuler.net) made in multiple languages.
