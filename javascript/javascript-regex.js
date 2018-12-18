@@ -319,9 +319,43 @@
 }
 
 // REGULAR EXPRESSIONS: POSITIVE AND NEGATIVE LOOKAHEAD
+// ?= are used for positive lookahead TODO: NO ENTENDI BIEN
 {
   let sampleWord = 'astronaut';
-  let pwRegex = /change/; // Change this line
+  let pwRegex = /(?=\w{5,})(?=\D*\d{2,})/; // Change this line
   let result = pwRegex.test(sampleWord);
   console.log(pwRegex, result);
+}
+
+// REGULAR EXPRESSIONS: REUSE PATTERNS USING CAPTURE GROUPS
+// match only repeating numbers three times, not two and not four.
+// the pattern has start and end anchors.. ^ and $
+// so, it takes the (\d+) capture group, and checks that it's present
+// a space, the group, another space, the group again, and then endline anchor ($)
+// the two anchors are necessary to match ONLY three times the repeating pattern.
+// without the '^' it will match  23 |23 23 23| or 54 54 54 |54 54 54|
+// without the '$' it will match  |41 41 41| 41 or |36 36 36| 36 36 36 36
+// without both it will match |12 12 12| 12 12 12 or 12 |12 12 12| 12 12 or 12 12 |12 12 12| 12 or 12 12 12 |12 12 12|
+{
+  let repeatNum = '42 42 42';
+  let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
+  let result = reRegex.test(repeatNum);
+  console.log(reRegex, result);
+}
+
+// Regular Expressions: Use Capture Groups to Search and Replace
+// self-explanatory
+{
+  let huhText = 'This sandwich is good.';
+  let fixRegex = /good/; // Change this line
+  let replaceText = 'okey-dokey'; // Change this line
+  let result = huhText.replace(fixRegex, replaceText);
+  console.log(huhText, '|', fixRegex, '=>', replaceText, '|', result);
+}
+
+{
+  let hello = '   Hello, World!  ';
+  let wsRegex = /^\s+|\s+$/g; // Change this line
+  let result = hello.replace(wsRegex, ''); // Change this line
+  console.log(result);
 }
