@@ -28,6 +28,8 @@ function sym (...args) {
   return resultArr;
 }
 
+console.log(sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1]));
+
 // Algorithms: Inventory Update
 // Compare and update the inventory stored in a 2D array against a second 2D
 // array of a fresh delivery. Update the current existing inventory item
@@ -50,6 +52,8 @@ function updateInventory (arr1, arr2) {
   });
   return newArr.sort((obj1, obj2) => obj1[1].localeCompare(obj2[1]));
 }
+
+console.log(updateInventory([[21, 'Bowling Ball'], [2, 'Dirty Sock'], [1, 'Hair Pin'], [5, 'Microphone']], [[2, 'Hair Pin'], [3, 'Half-Eaten Apple'], [67, 'Bowling Ball'], [7, 'Toothpaste']]));
 
 // Algorithms: No Repeats Please
 // Return the number of total permutations of the provided string that don't
@@ -89,6 +93,8 @@ function permAlone (stringToPermutate) {
   _permutator();
   return count;
 }
+
+console.log(permAlone('abfdefa'));
 
 // Algorithms: Pairwise
 // Given an array arr, find element pairs whose sum equal the second argument
@@ -184,10 +190,47 @@ function insertionSort (array) {
 
 console.log(insertionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
 
-// Algorithms: Implement Quick Sort
 function quickSort (array) {
-  // change code below this line
+  if (array.length <= 1) { return array; } // base case
 
-  // change code above this line
-  return array;
+  let left = []; // elements <= than pivot
+  let right = []; // elements > than pivot
+  const pivot = array.pop(); // last element is pivot, for simplicity
+
+  // a for is more performant than two Array.filter() calls
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] <= pivot) {
+      left.push(array[i]);
+    } else {
+      right.push(array[i]);
+    }
+  }
+
+  return [...quickSort(left), pivot, ...quickSort(right)];
 }
+
+console.log(quickSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
+
+function mergeSort (array) {
+  if (array.length <= 1) { return array; }
+  const mid = Math.floor(array.length / 2);
+  const left = array.slice(0, mid);
+  const right = array.slice(mid);
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge (left, right) {
+  let result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      result.push(left[leftIndex++]);
+    } else {
+      result.push(right[rightIndex++]);
+    }
+  }
+  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}
+
+console.log(mergeSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
